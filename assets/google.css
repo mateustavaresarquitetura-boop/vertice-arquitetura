@@ -1,6 +1,6 @@
 .contact-grid{grid-template-columns:repeat(4,1fr)}
 .google-card{position:relative;border-top:3px solid var(--blue)}
-.google-mark{position:absolute;right:22px;top:18px;color:var(--blue);font:bold 25px Arial,sans-serif}
+.card-heading{display:flex;align-items:center;gap:12px;margin-bottom:16px}.card-heading h2{margin:0}.channel-icon{display:grid;place-items:center;flex:0 0 34px;width:34px;height:34px;border-radius:9px}.channel-icon svg{width:19px;height:19px;fill:currentColor}.whatsapp-icon{color:#fff;background:#25d366}.email-icon{color:#fff;background:var(--blue)}.instagram-icon{color:#fff;background:linear-gradient(135deg,#6a35c4,#d62976 58%,#f5a623)}.google-icon{border:1px solid var(--line);background:#fff;color:#4285f4;font:bold 21px Arial,sans-serif}
 .contact-card .google-link{display:inline-flex;align-items:center;gap:18px;margin-top:12px;color:var(--blue);font-weight:800}
 .contact-card .google-link:hover{color:var(--deep)}
 @media(max-width:1060px){.contact-grid{grid-template-columns:repeat(2,1fr)}}
