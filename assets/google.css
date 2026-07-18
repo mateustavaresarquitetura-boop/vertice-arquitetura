@@ -1,0 +1,7 @@
+.contact-grid{grid-template-columns:repeat(4,1fr)}
+.google-card{position:relative;border-top:3px solid var(--blue)}
+.google-mark{position:absolute;right:22px;top:18px;color:var(--blue);font:bold 25px Arial,sans-serif}
+.contact-card .google-link{display:inline-flex;align-items:center;gap:18px;margin-top:12px;color:var(--blue);font-weight:800}
+.contact-card .google-link:hover{color:var(--deep)}
+@media(max-width:1060px){.contact-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:720px){.contact-grid{grid-template-columns:1fr}}
