@@ -1,7 +1,29 @@
 .contact-grid{grid-template-columns:repeat(4,1fr)}
+.contact-intro{display:grid;grid-template-columns:1fr 280px;gap:64px;align-items:center;margin-bottom:52px;padding:38px 48px;background:linear-gradient(120deg,#fff 0%,#fff 64%,#edf5fa 100%);border:1px solid var(--line);border-left:4px solid var(--gold)}
+.contact-intro-copy>p:not(.eyebrow){max-width:680px;margin:20px 0 0;color:var(--muted);font-size:15px;line-height:1.75}
+.assistant-signature{display:flex;align-items:center;gap:12px;margin-top:24px}
+.assistant-signature strong{color:var(--deep);font:400 22px Georgia,serif}
+.assistant-signature span{padding-left:12px;border-left:1px solid var(--gold);color:var(--blue);font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.assistant-avatar{display:grid;place-items:center}
+.assistant-avatar img{display:block;width:250px;height:250px;border-radius:50%;object-fit:cover;background:#fff;box-shadow:0 18px 45px rgba(5,43,72,.16);border:5px solid #fff;outline:1px solid rgba(178,138,62,.35)}
+
 .google-card{position:relative;border-top:3px solid var(--blue)}
-.card-heading{display:flex;align-items:center;gap:12px;margin-bottom:16px}.card-heading h2{margin:0}.channel-icon{display:grid;place-items:center;flex:0 0 34px;width:34px;height:34px;border-radius:9px}.channel-icon svg{width:19px;height:19px;fill:currentColor}.whatsapp-icon{color:#fff;background:#25d366}.email-icon{color:#fff;background:var(--blue)}.instagram-icon{color:#fff;background:linear-gradient(135deg,#6a35c4,#d62976 58%,#f5a623)}.google-icon{border:1px solid var(--line);background:#fff;color:#4285f4;font:bold 21px Arial,sans-serif}
+
+.card-heading{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.card-heading h2{margin:0}
+.channel-icon{display:grid;place-items:center;flex:0 0 34px;width:34px;height:34px;border-radius:9px}
+.channel-icon svg{width:19px;height:19px;fill:currentColor}
+.whatsapp-icon{color:#fff;background:#25d366}
+.email-icon{color:#fff;background:var(--blue)}
+.instagram-icon{color:#fff;background:linear-gradient(135deg,#6a35c4,#d62976 58%,#f5a623)}
+.google-icon{border:1px solid var(--line);background:#fff;color:#4285f4;font:bold 21px Arial,sans-serif}
+
 .contact-card .google-link{display:inline-flex;align-items:center;gap:18px;margin-top:12px;color:var(--blue);font-weight:800}
+
 .contact-card .google-link:hover{color:var(--deep)}
-@media(max-width:1060px){.contact-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:720px){.contact-grid{grid-template-columns:1fr}}
+
+@media(max-width:1060px){.contact-grid{grid-template-columns:repeat(2,1fr)}.contact-intro{grid-template-columns:1fr 230px;gap:35px}.assistant-avatar img{width:210px;height:210px}
+}
+
+@media(max-width:720px){.contact-grid{grid-template-columns:1fr}.contact-intro{grid-template-columns:1fr;padding:30px 24px;text-align:left}.assistant-avatar{grid-row:1}.assistant-avatar img{width:190px;height:190px}.assistant-signature{align-items:flex-start;flex-direction:column}.assistant-signature span{padding-left:0;border-left:0}
+}
