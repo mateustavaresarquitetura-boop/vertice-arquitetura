@@ -17,47 +17,55 @@
   const state = {opened:false, started:false, userMessages:[]};
 
   function mountVerticeSaudeButtons(){
-    const hero = document.getElementById("inicio");
     const header = document.querySelector("body > .header");
-    const headerCta = header?.querySelector(":scope > .header-cta");
+    if(!header) return;
+
+    header.querySelectorAll('nav a[href="vertice-saude.html"]').forEach(link => link.remove());
+
+    const isVerticeSaudePage = /(^|\/)vertice-saude\.html$/i.test(window.location.pathname);
+    const headerCta = header.querySelector(":scope > .header-cta");
+
+    if(!isVerticeSaudePage && headerCta && !header.querySelector(".vs-app-header-button")){
+      const style = document.createElement("style");
+      style.id = "vs-app-button-styles";
+      style.textContent = `
+        .vs-header-actions{display:flex;align-items:center;gap:10px;flex:none}
+        .vs-app-header-button{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:43px;padding:0 16px;border:1px solid #b28a3e;background:#b28a3e;color:#fff;font-size:12px;font-weight:800;white-space:nowrap;transition:background .2s ease,color .2s ease,transform .2s ease,border-color .2s ease}
+        .vs-app-header-button:hover{border-color:#d4b571;background:#d4b571;color:#052b48;transform:translateY(-1px)}
+        .vs-app-hero-button{display:inline-flex;align-items:center;justify-content:space-between;min-width:210px;min-height:58px;padding:0 18px 0 22px;border:1px solid rgba(255,255,255,.38);background:rgba(255,255,255,.06);color:#fff;font-size:13px;font-weight:800;box-shadow:0 12px 28px rgba(0,0,0,.08);transition:background .2s ease,color .2s ease,transform .2s ease,border-color .2s ease}
+        .vs-app-hero-button span{display:grid;place-items:center;width:28px;height:28px;margin-left:22px;border-radius:50%;background:rgba(255,255,255,.13);font-size:16px}
+        .vs-app-hero-button:hover{border-color:#fff;background:#fff;color:#052b48;transform:translateY(-2px)}
+        .vs-app-hero-button:hover span{background:rgba(5,43,72,.09)}
+        @media(max-width:1180px){.vs-header-actions{gap:7px}.vs-app-header-button{padding:0 12px;font-size:11px}.vs-header-actions .header-cta{padding-left:12px;padding-right:12px}}
+        @media(max-width:1060px){.vs-header-actions{margin-left:auto;margin-right:12px}.vs-header-actions .header-cta{margin:0}}
+        @media(max-width:760px){.vs-app-header-button{min-height:40px;padding:0 11px;font-size:10px}.hero .actions .vs-app-hero-button{width:100%;justify-content:space-between}}
+        @media(max-width:430px){.vs-app-header-button{font-size:0;min-width:54px;padding:0 10px}.vs-app-header-button:before{content:"App";font-size:10px}.vs-app-header-button span{font-size:12px}}
+      `;
+      document.head.append(style);
+
+      const headerActions = document.createElement("div");
+      headerActions.className = "vs-header-actions";
+      header.insertBefore(headerActions, headerCta);
+
+      const headerAppButton = document.createElement("a");
+      headerAppButton.className = "vs-app-header-button";
+      headerAppButton.href = "vertice-saude.html";
+      headerAppButton.setAttribute("aria-label", "Conhecer o aplicativo Vértice Saúde");
+      headerAppButton.innerHTML = `Vértice Saúde <span aria-hidden="true">↗</span>`;
+      headerActions.append(headerAppButton, headerCta);
+    }
+
+    const hero = document.getElementById("inicio");
     const heroActions = hero?.querySelector(".actions");
     const heroPrimary = heroActions?.querySelector(".btn");
-
-    if(!hero || !header || !headerCta || !heroActions || !heroPrimary || document.querySelector(".vs-app-header-button")) return;
-
-    const style = document.createElement("style");
-    style.id = "vs-app-button-styles";
-    style.textContent = `
-      .vs-header-actions{display:flex;align-items:center;gap:10px;flex:none}
-      .vs-app-header-button{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:43px;padding:0 16px;border:1px solid #b28a3e;background:#b28a3e;color:#fff;font-size:12px;font-weight:800;white-space:nowrap;transition:background .2s ease,color .2s ease,transform .2s ease,border-color .2s ease}
-      .vs-app-header-button:hover{border-color:#d4b571;background:#d4b571;color:#052b48;transform:translateY(-1px)}
-      .vs-app-hero-button{display:inline-flex;align-items:center;justify-content:space-between;min-width:210px;min-height:58px;padding:0 18px 0 22px;border:1px solid rgba(255,255,255,.38);background:rgba(255,255,255,.06);color:#fff;font-size:13px;font-weight:800;box-shadow:0 12px 28px rgba(0,0,0,.08);transition:background .2s ease,color .2s ease,transform .2s ease,border-color .2s ease}
-      .vs-app-hero-button span{display:grid;place-items:center;width:28px;height:28px;margin-left:22px;border-radius:50%;background:rgba(255,255,255,.13);font-size:16px}
-      .vs-app-hero-button:hover{border-color:#fff;background:#fff;color:#052b48;transform:translateY(-2px)}
-      .vs-app-hero-button:hover span{background:rgba(5,43,72,.09)}
-      @media(max-width:1180px){.vs-header-actions{gap:7px}.vs-app-header-button{padding:0 12px;font-size:11px}.vs-header-actions .header-cta{padding-left:12px;padding-right:12px}}
-      @media(max-width:980px){.vs-header-actions{margin-left:auto}}
-      @media(max-width:760px){.vs-header-actions{display:none}.hero .actions .vs-app-hero-button{width:100%;justify-content:space-between}}
-    `;
-    document.head.append(style);
-
-    const headerActions = document.createElement("div");
-    headerActions.className = "vs-header-actions";
-    header.insertBefore(headerActions, headerCta);
-
-    const headerAppButton = document.createElement("a");
-    headerAppButton.className = "vs-app-header-button";
-    headerAppButton.href = "vertice-saude.html";
-    headerAppButton.setAttribute("aria-label", "Conhecer o aplicativo Vértice Saúde");
-    headerAppButton.innerHTML = `Vértice Saúde <span aria-hidden="true">↗</span>`;
-    headerActions.append(headerAppButton, headerCta);
-
-    const heroAppButton = document.createElement("a");
-    heroAppButton.className = "vs-app-hero-button";
-    heroAppButton.href = "vertice-saude.html";
-    heroAppButton.setAttribute("aria-label", "Conhecer o aplicativo Vértice Saúde");
-    heroAppButton.innerHTML = `Conhecer o app <span aria-hidden="true">→</span>`;
-    heroPrimary.insertAdjacentElement("afterend", heroAppButton);
+    if(heroPrimary && !heroActions.querySelector(".vs-app-hero-button")){
+      const heroAppButton = document.createElement("a");
+      heroAppButton.className = "vs-app-hero-button";
+      heroAppButton.href = "vertice-saude.html";
+      heroAppButton.setAttribute("aria-label", "Conhecer o aplicativo Vértice Saúde");
+      heroAppButton.innerHTML = `Conhecer o app <span aria-hidden="true">→</span>`;
+      heroPrimary.insertAdjacentElement("afterend", heroAppButton);
+    }
   }
 
   function mountVerticeSaudePromo(){
