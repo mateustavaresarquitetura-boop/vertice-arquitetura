@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mateustavaresarquitetura-boop.github.io/vertice-arquitetura/sitemap.xml
