@@ -47,7 +47,7 @@
     {key:"property",question:"Qual é o tipo de estabelecimento ou imóvel? Exemplo: clínica odontológica, farmácia, loja, residência ou escritório."},
     {key:"area",question:"Qual é a área aproximada do imóvel? Você pode informar em m² ou responder “ainda não sei”."},
     {key:"situation",question:"Qual é a situação atual?",options:["Imóvel existente","Obra nova","Reforma","Já possuo uma planta","Recebi exigência de órgão público","Ainda estou procurando o imóvel"]},
-    {key:"need",question:"Qual é a principal necessidade ou o resultado que você espera do projeto?"},
+    {key:"need",question:"Qual é a principal necessidade ou o resultado que você espera do projeto?<br><br><strong>Explique exatamente o que precisa.</strong> Por exemplo: se você selecionou reforma de uma casa, informe se deseja reformar a casa inteira ou apenas um cômodo, como cozinha, banheiro, quarto ou sala."},
     {key:"deadline",question:"Existe prazo, urgência ou uma data prevista para iniciar?"},
     {key:"contact",question:"Qual telefone ou e-mail prefere usar para retorno?",options:["Usar o WhatsApp de envio","Prefiro informar depois"]}
   ];
