@@ -3,12 +3,12 @@
   const normalize = (text) => text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
   const initialQuick = [
-    "O que é o Vértice Saúde",
-    "Funções do aplicativo",
-    "Versão gratuita e Pro",
-    "Projetos para Vigilância Sanitária",
-    "Qualificações do arquiteto",
-    "Avaliações e perícias"
+    "Vértice Saúde",
+    "Projetos e serviços",
+    "Sobre o Arq. Mateus",
+    "Contatos e atendimento",
+    "Avaliações e perícias",
+    "Solicitar orçamento"
   ];
 
   const appQuick = [
@@ -24,15 +24,26 @@
     "Projetos para Vigilância Sanitária",
     "Projetos comerciais",
     "Projetos residenciais",
-    "Solicitar atendimento",
+    "Solicitar orçamento",
+    "Contatos e atendimento",
     "Menu principal"
   ];
 
   const profileQuick = [
     "Qualificações do arquiteto",
     "Projetos para Vigilância Sanitária",
+    "Projetos comerciais",
     "Avaliações e perícias",
-    "Solicitar atendimento",
+    "Contatos e atendimento",
+    "Menu principal"
+  ];
+
+  const contactQuick = [
+    "WhatsApp",
+    "E-mail",
+    "Instagram",
+    "Horário de atendimento",
+    "Solicitar orçamento",
     "Menu principal"
   ];
 
@@ -40,11 +51,49 @@
     "Avaliação de imóveis",
     "Vistorias e inspeções",
     "Laudos e pareceres",
-    "Solicitar atendimento",
+    "Solicitar orçamento",
+    "Contatos e atendimento",
     "Menu principal"
   ];
 
   const responses = [
+    {
+      test:/^projetos e servicos$|tipos de projeto|quais projetos|servicos da vertice/,
+      text:"A <strong>Vértice</strong> atua com projetos para estabelecimentos de saúde e de interesse à saúde, projetos comerciais, residenciais e de interiores, além de avaliações imobiliárias, perícias, vistorias, laudos e pareceres técnicos. Escolha uma área para continuar.",
+      quick:projectQuick
+    },
+    {
+      test:/^sobre o arq\. mateus$|sobre o arquiteto|quem e mateus|quem e o arquiteto/,
+      text:"Mateus José de Andrade Tavares é <strong>Arquiteto e Urbanista, CAU A302785-6</strong>, proprietário e responsável técnico da Vértice. Sua experiência na enfermagem e na segurança do paciente contribui especialmente para projetos de saúde, unindo visão assistencial, técnica e arquitetônica.",
+      quick:profileQuick
+    },
+    {
+      test:/^contatos e atendimento$|nossos contatos|formas de contato|canais de atendimento/,
+      text:"Você pode falar com a Vértice pelo <strong>WhatsApp (31) 97534-4356</strong>, pelo e-mail <strong>mateustavares.arquitetura@gmail.com</strong> ou pelos perfis <strong>@arquiteto.mateustavares</strong> e <strong>@vertice_arquiteturaeavaliacoes</strong> no Instagram.<br><br>Atendimento: segunda a sexta, das 08h às 19h30; sábado, das 09h às 13h.",
+      quick:contactQuick,
+      cta:true
+    },
+    {
+      test:/^whatsapp$|numero do whatsapp|qual o whatsapp/,
+      text:"O WhatsApp da Vértice é <strong>(31) 97534-4356</strong>. Você pode iniciar o atendimento pelo botão abaixo.",
+      quick:contactQuick,
+      cta:true
+    },
+    {
+      test:/^e-mail$|^email$|qual o email/,
+      text:"O e-mail da Vértice é <strong>mateustavares.arquitetura@gmail.com</strong>. Ele é indicado para envio de documentos, propostas e apresentações mais detalhadas.",
+      quick:contactQuick
+    },
+    {
+      test:/^instagram$|redes sociais/,
+      text:"A Vértice está no Instagram em <strong>@arquiteto.mateustavares</strong> e <strong>@vertice_arquiteturaeavaliacoes</strong>.",
+      quick:contactQuick
+    },
+    {
+      test:/horario de atendimento|horario|que horas atende/,
+      text:"O atendimento da Vértice ocorre de <strong>segunda a sexta, das 08h às 19h30</strong>, e aos <strong>sábados, das 09h às 13h</strong>.",
+      quick:contactQuick
+    },
     {
       test:/contratar (o )?pro|assinar (o )?pro|quero (o )?pro|tenho interesse (no|na) pro/,
       text:"O <strong>Vértice Saúde Pro</strong> será a modalidade destinada ao uso profissional ampliado. Os recursos definitivos, valores e condições de assinatura serão apresentados no lançamento. Posso encaminhar seu interesse para a Vértice.",
@@ -125,7 +174,7 @@
     {
       test:/contato|whatsapp|telefone|falar|atendimento|contratar|proposta/,
       text:"Ótimo. Para continuar, clique no botão de WhatsApp abaixo. Se puder, informe na mensagem: <strong>cidade, tipo de imóvel, serviço desejado e área aproximada</strong>.",
-      quick:initialQuick,
+      quick:contactQuick,
       cta:true
     }
   ];
@@ -251,12 +300,14 @@
     mountVerticeSaudePromo();
 
     const root = document.createElement("div");
-    root.innerHTML = `<button class="nexo-launcher" type="button" aria-label="Abrir o assistente virtual Vito" aria-expanded="false"><img src="assets/nexo-assistente-vertice.webp" alt=""><span>Fale com o Vito<small>Assistente virtual</small></span></button><section class="nexo-panel" role="dialog" aria-modal="false" aria-label="Assistente virtual Vito"><header class="nexo-head"><img src="assets/nexo-assistente-vertice.webp" alt="Avatar do Vito"><div class="nexo-head-copy"><strong>Vito</strong><span><i class="nexo-status"></i> Assistente virtual da Vértice</span></div><button class="nexo-close" type="button" aria-label="Fechar assistente">×</button></header><div class="nexo-messages" aria-live="polite"></div><div class="nexo-note">Atendimento inicial automatizado. Informações técnicas dependem da análise do arquiteto responsável.</div><form class="nexo-form"><input type="text" maxlength="300" placeholder="Digite sua dúvida..." aria-label="Mensagem para o Vito" autocomplete="off"><button class="nexo-send" type="submit" aria-label="Enviar mensagem">➜</button></form></section>`;
+    root.innerHTML = `<button class="nexo-launcher" type="button" aria-label="Abrir o assistente virtual Vito" aria-expanded="false"><img src="assets/nexo-assistente-vertice.webp" alt=""><span>Fale com o Vito<small>Assistente virtual</small></span></button><section class="nexo-panel" role="dialog" aria-modal="false" aria-label="Assistente virtual Vito"><header class="nexo-head"><img src="assets/nexo-assistente-vertice.webp" alt="Avatar do Vito"><div class="nexo-head-copy"><strong>Vito</strong><span><i class="nexo-status"></i> Assistente virtual da Vértice</span></div><button class="nexo-close" type="button" aria-label="Fechar assistente">×</button></header><div class="nexo-toolbar"><button class="nexo-main-menu" type="button" aria-label="Voltar ao menu principal">⌂ Menu principal</button><button class="nexo-restart" type="button" aria-label="Reiniciar conversa">↻ Reiniciar conversa</button></div><div class="nexo-messages" aria-live="polite"></div><div class="nexo-note">Atendimento inicial automatizado. Informações técnicas dependem da análise do arquiteto responsável.</div><form class="nexo-form"><input type="text" maxlength="300" placeholder="Digite sua dúvida..." aria-label="Mensagem para o Vito" autocomplete="off"><button class="nexo-send" type="submit" aria-label="Enviar mensagem">➜</button></form></section>`;
     document.body.append(root);
 
     const launcher = root.querySelector(".nexo-launcher");
     const panel = root.querySelector(".nexo-panel");
     const close = root.querySelector(".nexo-close");
+    const mainMenu = root.querySelector(".nexo-main-menu");
+    const restart = root.querySelector(".nexo-restart");
     const form = root.querySelector(".nexo-form");
     const input = form.querySelector("input");
 
@@ -277,6 +328,8 @@
 
     launcher.addEventListener("click", () => state.opened ? shut() : open());
     close.addEventListener("click", shut);
+    mainMenu.addEventListener("click", showMainMenu);
+    restart.addEventListener("click", restartConversation);
     document.querySelectorAll("[data-open-nexo]").forEach(el => el.addEventListener("click", open));
     document.addEventListener("keydown", e => { if(e.key === "Escape" && state.opened) shut(); });
     form.addEventListener("submit", e => {
@@ -323,6 +376,20 @@
     messages().scrollTop = messages().scrollHeight;
   }
 
+  function showMainMenu(){
+    clearQuick();
+    add("Você voltou ao <strong>menu principal</strong>. Escolha o assunto que deseja conhecer:");
+    quick(initialQuick);
+  }
+
+  function restartConversation(){
+    const box = messages();
+    if(box) box.innerHTML = "";
+    state.userMessages = [];
+    state.started = false;
+    welcome();
+  }
+
   function whatsapp(){
     const summary = state.userMessages.slice(-4).join(" | ");
     const text = `Olá, Mateus! Conversei com o Vito pelo site da Vértice. Tenho interesse em atendimento.${summary ? ` Minha necessidade: ${summary}` : ""}`;
@@ -342,7 +409,7 @@
 
   function welcome(){
     state.started = true;
-    add("Olá! Eu sou o <strong>Vito</strong>, assistente virtual da Vértice. Posso explicar os serviços, as qualificações do Arq. Mateus e apresentar o Vértice Saúde, incluindo suas funções e as versões <strong>Gratuita</strong> e <strong>Pro</strong>.");
+    add("Olá! Eu sou o <strong>Vito</strong>, assistente virtual da Vértice. Posso apresentar o Vértice Saúde, os projetos e serviços, as qualificações do Arq. Mateus e os canais de atendimento.");
     add("Escolha uma das opções abaixo ou escreva sua dúvida:");
     quick(initialQuick);
   }
@@ -353,11 +420,12 @@
     state.userMessages.push(value);
 
     const normalized = normalize(value);
-    if(/^(menu principal|voltar ao menu principal|outras opcoes|outras opções)$/.test(normalized)){
-      setTimeout(() => {
-        add("Claro. Escolha o assunto que deseja conhecer:");
-        quick(initialQuick);
-      }, 180);
+    if(/^(menu principal|voltar ao menu principal|outras opcoes|outras opções|inicio|início)$/.test(normalized)){
+      setTimeout(showMainMenu, 180);
+      return;
+    }
+    if(/^(reiniciar|reiniciar conversa|nova conversa|comecar de novo|começar de novo)$/.test(normalized)){
+      setTimeout(restartConversation, 180);
       return;
     }
 
@@ -371,7 +439,7 @@
         return;
       }
 
-      add("Posso ajudar com o Vértice Saúde, suas versões Gratuita e Pro, projetos comerciais, residenciais, estabelecimentos sujeitos à Vigilância Sanitária, avaliações, perícias e informações sobre a Vértice. Escolha uma opção abaixo para continuar.");
+      add("Posso ajudar com o Vértice Saúde, projetos e serviços, informações sobre o Arq. Mateus, avaliações, perícias e contatos da Vértice. Escolha uma opção abaixo para continuar.");
       quick(initialQuick);
     }, 260);
   }
