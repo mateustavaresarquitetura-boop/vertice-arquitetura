@@ -2,6 +2,16 @@
   const phone = "5531975344356";
   const normalize = text => text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
+  function loadSeo(){
+    if(document.getElementById("vertice-seo-script")) return;
+    const script = document.createElement("script");
+    script.id = "vertice-seo-script";
+    script.src = "assets/seo.js";
+    script.defer = true;
+    document.head.append(script);
+  }
+  loadSeo();
+
   const initialQuick = ["Vértice Saúde","Projetos e serviços","Sobre o Arq. Mateus","Contatos e atendimento","Avaliações e perícias","Solicitar orçamento"];
   const appQuick = ["O que é o Vértice Saúde","Funções do aplicativo","Versão gratuita e Pro","Uso offline","Responsabilidade normativa","Menu principal"];
   const projectQuick = ["Iniciar atendimento do projeto","Projetos para Vigilância Sanitária","Projetos comerciais","Projetos residenciais","Contatos e atendimento","Menu principal"];
