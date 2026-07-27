@@ -1,26 +1,135 @@
 (() => {
   const phone = "5531975344356";
   const normalize = (text) => text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-  const appQuick = ["Funções do aplicativo","Versão gratuita e Pro","Uso offline","Responsabilidade normativa"];
-  const responses = [
-    {test:/contratar (o )?pro|assinar (o )?pro|quero (o )?pro|tenho interesse (no|na) pro/,text:"O <strong>Vértice Saúde Pro</strong> será a modalidade destinada ao uso profissional ampliado. Os recursos definitivos, valores e condições de assinatura serão apresentados no lançamento. Posso encaminhar seu interesse para a Vértice.",quick:appQuick,cta:true},
-    {test:/versao gratuita|versao gratis|gratuita|gratis|free|versao pro|plano pro|planos do app|planos do aplicativo|assinatura|preco do app|valor do app|quanto custa o app/,text:"O <strong>Vértice Saúde</strong> será disponibilizado em duas modalidades: <strong>Gratuita</strong> e <strong>Pro</strong>.<br><br>• A versão <strong>Gratuita</strong> permitirá conhecer e utilizar os recursos essenciais da plataforma.<br>• A versão <strong>Pro</strong> será voltada ao uso profissional ampliado, com funcionalidades avançadas e maior capacidade de organização do trabalho.<br><br>A composição definitiva dos recursos, os limites de cada modalidade e os valores da versão Pro serão divulgados no lançamento.",quick:appQuick},
-    {test:/funcao do app|funcoes do app|funcao do aplicativo|funcoes do aplicativo|funcionalidade|funcionalidades|o que (o app|ele) faz|recursos do app|gestao de projetos|checklist eas|consultor tecnico|biblioteca normativa|conferencias tecnicas|documentos e anotacoes/,text:"O <strong>Vértice Saúde</strong> foi estruturado para reunir, em um só ambiente:<br><br>• gestão e acompanhamento de projetos;<br>• Checklist EAS vinculado a cada trabalho;<br>• consultor técnico por tipo de estabelecimento e ambiente;<br>• biblioteca normativa e referências oficiais organizadas;<br>• conferências técnicas, documentos e anotações;<br>• acompanhamento de pendências e progresso;<br>• instalação como PWA, uso offline e sincronização quando houver conexão.<br><br>O aplicativo terá versões <strong>Gratuita</strong> e <strong>Pro</strong>.",quick:appQuick},
-    {test:/uso offline|offline|sem internet|pwa|instalar o app|instalar aplicativo|sincroniza|sincronizacao/,text:"Sim. O <strong>Vértice Saúde</strong> foi planejado como PWA, para instalação no computador, tablet ou celular. A proposta inclui uso offline após o primeiro carregamento e sincronização das informações quando a conexão for restabelecida. A disponibilidade de cada recurso poderá variar entre as versões Gratuita e Pro.",quick:appQuick},
-    {test:/substitui a norma|substitui norma|responsabilidade normativa|responsabilidade tecnica do app|legislacao do app|norma vigente|fonte oficial/,text:"O Vértice Saúde organiza referências, checklists e pontos de conferência, mas <strong>não substitui</strong> a consulta à norma na fonte oficial, a verificação da versão vigente, a legislação estadual e municipal, o enquadramento da atividade nem a decisão do profissional habilitado.",quick:appQuick},
-    {test:/lancamento do app|quando o app|quando fica pronto|quando sera lancado|quando vai lancar|baixar aplicativo|baixar o app|acesso ao app|app disponivel/,text:"O <strong>Vértice Saúde</strong> está em desenvolvimento. A página oficial será atualizada quando as versões Gratuita e Pro estiverem disponíveis, juntamente com os recursos, limites e condições de acesso de cada modalidade.",quick:appQuick},
-    {test:/vertice saude|aplicativo|app|plataforma/,text:"O <strong>Vértice Saúde</strong> é uma plataforma em desenvolvimento para profissionais que projetam estabelecimentos de saúde. Ela reúne gestão de projetos, Checklist EAS, consultor técnico, conferências, documentos, biblioteca normativa, apoio à verificação e uso offline com sincronização. O aplicativo será oferecido nas versões <strong>Gratuita</strong> e <strong>Pro</strong>.",quick:appQuick},
-    {test:/qualifica|formacao|especializa|experiencia|mateus|arquiteto/,text:"Mateus José de Andrade Tavares é <strong>Arquiteto e Urbanista, CAU A302785-6</strong>, com pós-graduação em Projetos Hospitalares e Estabelecimentos de Saúde com ênfase em BIM e formação em auditoria, avaliações e perícias. Sua experiência assistencial e em segurança do paciente contribui especialmente para projetos de saúde."},
-    {test:/empresa|vertice|quem (e|sao)|sobre voces/,text:"A <strong>Vértice Arquitetura e Avaliações</strong> atua em Ipatinga e região com projetos arquitetônicos, projetos para saúde e atividades de interesse à saúde, projetos comerciais e residenciais, além de avaliações, perícias, vistorias, laudos e relatórios técnicos."},
-    {test:/vigilancia|sanitaria|saude|clinica|consultorio|farmacia|odont|estetica|laboratorio/,text:"A Vértice possui atuação especializada em <strong>estabelecimentos de saúde e de interesse à saúde</strong>, como clínicas, consultórios, farmácias, odontologia, estética e serviços de alimentação. O projeto considera fluxos, acessibilidade, higiene, materiais e requisitos aplicáveis ao processo de licenciamento sanitário."},
-    {test:/comercial|loja|lanchonete|restaurante|empresa|escritorio|sala comercial/,text:"Nos <strong>projetos comerciais</strong>, a Vértice organiza atendimento, circulação, operação, apoio e identidade do espaço. O trabalho busca equilibrar experiência do cliente, funcionalidade, viabilidade e exigências específicas da atividade."},
-    {test:/residencial|casa|apartamento|moradia|interior/,text:"Sim. A Vértice também desenvolve <strong>projetos arquitetônicos residenciais e de interiores</strong>, considerando rotina, conforto, aproveitamento do espaço, estética e orçamento. Posso encaminhar seu interesse para uma conversa inicial."},
-    {test:/avaliacao|pericia|vistoria|laudo|parecer|imovel/,text:"A empresa realiza <strong>avaliações imobiliárias, perícias, vistorias, inspeções, laudos e pareceres técnicos</strong>. Para indicar o serviço adequado, é importante informar a finalidade, a cidade e o tipo de imóvel."},
-    {test:/preco|valor|orcamento|quanto custa|custo/,text:"O valor depende do tipo de serviço, área, localização, complexidade e documentos necessários. Envie a cidade, o tipo de imóvel e o que precisa; o Arq. Mateus poderá analisar o escopo e preparar uma proposta.",cta:true},
-    {test:/prazo|demora|tempo/,text:"O prazo varia conforme o serviço, a área, a complexidade e eventuais análises de órgãos públicos. Após conhecer o imóvel e o objetivo, a Vértice informa um cronograma compatível com o escopo."},
-    {test:/contato|whatsapp|telefone|falar|atendimento|contratar|proposta/,text:"Ótimo. Para continuar, clique no botão de WhatsApp abaixo. Se puder, informe na mensagem: <strong>cidade, tipo de imóvel, serviço desejado e área aproximada</strong>.",cta:true}
+
+  const initialQuick = [
+    "O que é o Vértice Saúde",
+    "Funções do aplicativo",
+    "Versão gratuita e Pro",
+    "Projetos para Vigilância Sanitária",
+    "Qualificações do arquiteto",
+    "Avaliações e perícias"
   ];
-  const initialQuick = ["O que é o Vértice Saúde","Funções do aplicativo","Versão gratuita e Pro","Projetos para Vigilância Sanitária","Qualificações do arquiteto","Avaliações e perícias"];
+
+  const appQuick = [
+    "O que é o Vértice Saúde",
+    "Funções do aplicativo",
+    "Versão gratuita e Pro",
+    "Uso offline",
+    "Responsabilidade normativa",
+    "Menu principal"
+  ];
+
+  const projectQuick = [
+    "Projetos para Vigilância Sanitária",
+    "Projetos comerciais",
+    "Projetos residenciais",
+    "Solicitar atendimento",
+    "Menu principal"
+  ];
+
+  const profileQuick = [
+    "Qualificações do arquiteto",
+    "Projetos para Vigilância Sanitária",
+    "Avaliações e perícias",
+    "Solicitar atendimento",
+    "Menu principal"
+  ];
+
+  const evaluationQuick = [
+    "Avaliação de imóveis",
+    "Vistorias e inspeções",
+    "Laudos e pareceres",
+    "Solicitar atendimento",
+    "Menu principal"
+  ];
+
+  const responses = [
+    {
+      test:/contratar (o )?pro|assinar (o )?pro|quero (o )?pro|tenho interesse (no|na) pro/,
+      text:"O <strong>Vértice Saúde Pro</strong> será a modalidade destinada ao uso profissional ampliado. Os recursos definitivos, valores e condições de assinatura serão apresentados no lançamento. Posso encaminhar seu interesse para a Vértice.",
+      quick:appQuick,
+      cta:true
+    },
+    {
+      test:/versao gratuita|versao gratis|gratuita|gratis|free|versao pro|plano pro|planos do app|planos do aplicativo|assinatura|preco do app|valor do app|quanto custa o app/,
+      text:"O <strong>Vértice Saúde</strong> será disponibilizado em duas modalidades: <strong>Gratuita</strong> e <strong>Pro</strong>.<br><br>• A versão <strong>Gratuita</strong> permitirá conhecer e utilizar os recursos essenciais da plataforma.<br>• A versão <strong>Pro</strong> será voltada ao uso profissional ampliado, com funcionalidades avançadas e maior capacidade de organização do trabalho.<br><br>A composição definitiva dos recursos, os limites de cada modalidade e os valores da versão Pro serão divulgados no lançamento.",
+      quick:appQuick
+    },
+    {
+      test:/funcao do app|funcoes do app|funcao do aplicativo|funcoes do aplicativo|funcionalidade|funcionalidades|o que (o app|ele) (tem|faz)|recursos do app|gestao de projetos|checklist eas|consultor tecnico|biblioteca normativa|conferencias tecnicas|documentos e anotacoes/,
+      text:"O <strong>Vértice Saúde</strong> foi estruturado para reunir, em um só ambiente:<br><br>• gestão e acompanhamento de projetos;<br>• Checklist EAS vinculado a cada trabalho;<br>• consultor técnico por tipo de estabelecimento e ambiente;<br>• biblioteca normativa e referências oficiais organizadas;<br>• conferências técnicas, documentos e anotações;<br>• acompanhamento de pendências e progresso;<br>• instalação como PWA, uso offline e sincronização quando houver conexão.<br><br>O aplicativo terá versões <strong>Gratuita</strong> e <strong>Pro</strong>.",
+      quick:appQuick
+    },
+    {
+      test:/uso offline|offline|sem internet|pwa|instalar o app|instalar aplicativo|sincroniza|sincronizacao/,
+      text:"Sim. O <strong>Vértice Saúde</strong> foi planejado como PWA, para instalação no computador, tablet ou celular. A proposta inclui uso offline após o primeiro carregamento e sincronização das informações quando a conexão for restabelecida. A disponibilidade de cada recurso poderá variar entre as versões Gratuita e Pro.",
+      quick:appQuick
+    },
+    {
+      test:/substitui a norma|substitui norma|responsabilidade normativa|responsabilidade tecnica do app|legislacao do app|norma vigente|fonte oficial/,
+      text:"O Vértice Saúde organiza referências, checklists e pontos de conferência, mas <strong>não substitui</strong> a consulta à norma na fonte oficial, a verificação da versão vigente, a legislação estadual e municipal, o enquadramento da atividade nem a decisão do profissional habilitado.",
+      quick:appQuick
+    },
+    {
+      test:/lancamento do app|quando o app|quando fica pronto|quando sera lancado|quando vai lancar|baixar aplicativo|baixar o app|acesso ao app|app disponivel/,
+      text:"O <strong>Vértice Saúde</strong> está em desenvolvimento. A página oficial será atualizada quando as versões Gratuita e Pro estiverem disponíveis, juntamente com os recursos, limites e condições de acesso de cada modalidade.",
+      quick:appQuick
+    },
+    {
+      test:/vertice saude|aplicativo|app|plataforma/,
+      text:"O <strong>Vértice Saúde</strong> é uma plataforma em desenvolvimento para profissionais que projetam estabelecimentos de saúde. Ela reúne gestão de projetos, Checklist EAS, consultor técnico, conferências, documentos, biblioteca normativa, apoio à verificação e uso offline com sincronização. O aplicativo será oferecido nas versões <strong>Gratuita</strong> e <strong>Pro</strong>.",
+      quick:appQuick
+    },
+    {
+      test:/qualifica|formacao|especializa|experiencia|mateus|arquiteto/,
+      text:"Mateus José de Andrade Tavares é <strong>Arquiteto e Urbanista, CAU A302785-6</strong>, com pós-graduação em Projetos Hospitalares e Estabelecimentos de Saúde com ênfase em BIM e formação em auditoria, avaliações e perícias. Sua experiência assistencial e em segurança do paciente contribui especialmente para projetos de saúde.",
+      quick:profileQuick
+    },
+    {
+      test:/empresa|vertice|quem (e|sao)|sobre voces/,
+      text:"A <strong>Vértice Arquitetura e Avaliações</strong> atua em Ipatinga e região com projetos arquitetônicos, projetos para saúde e atividades de interesse à saúde, projetos comerciais e residenciais, além de avaliações, perícias, vistorias, laudos e relatórios técnicos.",
+      quick:initialQuick
+    },
+    {
+      test:/vigilancia|sanitaria|saude|clinica|consultorio|farmacia|odont|estetica|laboratorio/,
+      text:"A Vértice possui atuação especializada em <strong>estabelecimentos de saúde e de interesse à saúde</strong>, como clínicas, consultórios, farmácias, odontologia, estética e serviços de alimentação. O projeto considera fluxos, acessibilidade, higiene, materiais e requisitos aplicáveis ao processo de licenciamento sanitário.",
+      quick:projectQuick
+    },
+    {
+      test:/comercial|loja|lanchonete|restaurante|empresa|escritorio|sala comercial/,
+      text:"Nos <strong>projetos comerciais</strong>, a Vértice organiza atendimento, circulação, operação, apoio e identidade do espaço. O trabalho busca equilibrar experiência do cliente, funcionalidade, viabilidade e exigências específicas da atividade.",
+      quick:projectQuick
+    },
+    {
+      test:/residencial|casa|apartamento|moradia|interior/,
+      text:"Sim. A Vértice também desenvolve <strong>projetos arquitetônicos residenciais e de interiores</strong>, considerando rotina, conforto, aproveitamento do espaço, estética e orçamento. Posso encaminhar seu interesse para uma conversa inicial.",
+      quick:projectQuick
+    },
+    {
+      test:/avaliacao|pericia|vistoria|inspecao|laudo|parecer|imovel/,
+      text:"A empresa realiza <strong>avaliações imobiliárias, perícias, vistorias, inspeções, laudos e pareceres técnicos</strong>. Para indicar o serviço adequado, é importante informar a finalidade, a cidade e o tipo de imóvel.",
+      quick:evaluationQuick
+    },
+    {
+      test:/preco|valor|orcamento|quanto custa|custo/,
+      text:"O valor depende do tipo de serviço, área, localização, complexidade e documentos necessários. Envie a cidade, o tipo de imóvel e o que precisa; o Arq. Mateus poderá analisar o escopo e preparar uma proposta.",
+      quick:initialQuick,
+      cta:true
+    },
+    {
+      test:/prazo|demora|tempo/,
+      text:"O prazo varia conforme o serviço, a área, a complexidade e eventuais análises de órgãos públicos. Após conhecer o imóvel e o objetivo, a Vértice informa um cronograma compatível com o escopo.",
+      quick:initialQuick
+    },
+    {
+      test:/contato|whatsapp|telefone|falar|atendimento|contratar|proposta/,
+      text:"Ótimo. Para continuar, clique no botão de WhatsApp abaixo. Se puder, informe na mensagem: <strong>cidade, tipo de imóvel, serviço desejado e área aproximada</strong>.",
+      quick:initialQuick,
+      cta:true
+    }
+  ];
+
   const state = {opened:false, started:false, userMessages:[]};
 
   function mountVerticeSaudeButtons(){
@@ -140,27 +249,132 @@
   function init(){
     mountVerticeSaudeButtons();
     mountVerticeSaudePromo();
+
     const root = document.createElement("div");
     root.innerHTML = `<button class="nexo-launcher" type="button" aria-label="Abrir o assistente virtual Vito" aria-expanded="false"><img src="assets/nexo-assistente-vertice.webp" alt=""><span>Fale com o Vito<small>Assistente virtual</small></span></button><section class="nexo-panel" role="dialog" aria-modal="false" aria-label="Assistente virtual Vito"><header class="nexo-head"><img src="assets/nexo-assistente-vertice.webp" alt="Avatar do Vito"><div class="nexo-head-copy"><strong>Vito</strong><span><i class="nexo-status"></i> Assistente virtual da Vértice</span></div><button class="nexo-close" type="button" aria-label="Fechar assistente">×</button></header><div class="nexo-messages" aria-live="polite"></div><div class="nexo-note">Atendimento inicial automatizado. Informações técnicas dependem da análise do arquiteto responsável.</div><form class="nexo-form"><input type="text" maxlength="300" placeholder="Digite sua dúvida..." aria-label="Mensagem para o Vito" autocomplete="off"><button class="nexo-send" type="submit" aria-label="Enviar mensagem">➜</button></form></section>`;
     document.body.append(root);
-    const launcher = root.querySelector(".nexo-launcher"), panel = root.querySelector(".nexo-panel"), close = root.querySelector(".nexo-close"), form = root.querySelector(".nexo-form"), input = form.querySelector("input");
-    const open = () => {panel.classList.add("is-open");launcher.setAttribute("aria-expanded","true");state.opened=true;if(!state.started) welcome();setTimeout(()=>input.focus(),100)};
-    const shut = () => {panel.classList.remove("is-open");launcher.setAttribute("aria-expanded","false");state.opened=false;launcher.focus()};
-    launcher.addEventListener("click",()=>state.opened?shut():open()); close.addEventListener("click",shut);
-    document.querySelectorAll("[data-open-nexo]").forEach(el=>el.addEventListener("click",open));
-    document.addEventListener("keydown",e=>{if(e.key==="Escape"&&state.opened)shut()});
-    form.addEventListener("submit",e=>{e.preventDefault();const value=input.value.trim();if(!value)return;input.value="";handle(value)});
+
+    const launcher = root.querySelector(".nexo-launcher");
+    const panel = root.querySelector(".nexo-panel");
+    const close = root.querySelector(".nexo-close");
+    const form = root.querySelector(".nexo-form");
+    const input = form.querySelector("input");
+
+    const open = () => {
+      panel.classList.add("is-open");
+      launcher.setAttribute("aria-expanded", "true");
+      state.opened = true;
+      if(!state.started) welcome();
+      setTimeout(() => input.focus(), 100);
+    };
+
+    const shut = () => {
+      panel.classList.remove("is-open");
+      launcher.setAttribute("aria-expanded", "false");
+      state.opened = false;
+      launcher.focus();
+    };
+
+    launcher.addEventListener("click", () => state.opened ? shut() : open());
+    close.addEventListener("click", shut);
+    document.querySelectorAll("[data-open-nexo]").forEach(el => el.addEventListener("click", open));
+    document.addEventListener("keydown", e => { if(e.key === "Escape" && state.opened) shut(); });
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      const value = input.value.trim();
+      if(!value) return;
+      input.value = "";
+      handle(value);
+    });
   }
-  function messages(){return document.querySelector(".nexo-messages")}
-  function add(text,type="bot") {const el=document.createElement("div");el.className=`nexo-message ${type}`;el.innerHTML=text;messages().append(el);messages().scrollTop=messages().scrollHeight;return el}
-  function quick(labels=initialQuick){const wrap=document.createElement("div");wrap.className="nexo-quick";labels.forEach(label=>{const b=document.createElement("button");b.type="button";b.textContent=label;b.addEventListener("click",()=>handle(label));wrap.append(b)});messages().append(wrap);messages().scrollTop=messages().scrollHeight}
+
+  function messages(){
+    return document.querySelector(".nexo-messages");
+  }
+
+  function add(text, type = "bot"){
+    const el = document.createElement("div");
+    el.className = `nexo-message ${type}`;
+    el.innerHTML = text;
+    messages().append(el);
+    messages().scrollTop = messages().scrollHeight;
+    return el;
+  }
+
+  function clearQuick(){
+    messages()?.querySelectorAll(".nexo-quick").forEach(el => el.remove());
+  }
+
+  function quick(labels = initialQuick){
+    clearQuick();
+    const wrap = document.createElement("div");
+    wrap.className = "nexo-quick";
+    wrap.setAttribute("aria-label", "Opções de resposta rápida");
+
+    labels.forEach(label => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.textContent = label;
+      button.addEventListener("click", () => handle(label));
+      wrap.append(button);
+    });
+
+    messages().append(wrap);
+    messages().scrollTop = messages().scrollHeight;
+  }
+
   function whatsapp(){
-    const summary=state.userMessages.slice(-4).join(" | ");
-    const text=`Olá, Mateus! Conversei com o Vito pelo site da Vértice. Tenho interesse em atendimento.${summary?` Minha necessidade: ${summary}`:""}`;
+    const summary = state.userMessages.slice(-4).join(" | ");
+    const text = `Olá, Mateus! Conversei com o Vito pelo site da Vértice. Tenho interesse em atendimento.${summary ? ` Minha necessidade: ${summary}` : ""}`;
     return `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
   }
-  function cta(){const box=add("Deseja conversar diretamente com o Arq. Mateus?");const a=document.createElement("a");a.className="nexo-whatsapp";a.href=whatsapp();a.target="_blank";a.rel="noopener";a.textContent="Continuar pelo WhatsApp →";box.append(a)}
-  function welcome(){state.started=true;add("Olá! Eu sou o <strong>Vito</strong>, assistente virtual da Vértice. Posso explicar os serviços, as qualificações do Arq. Mateus e apresentar o Vértice Saúde, incluindo suas funções e as versões <strong>Gratuita</strong> e <strong>Pro</strong>.");add("Sobre o que você gostaria de conversar?");quick()}
-  function handle(value){add(value,"user");state.userMessages.push(value);const n=normalize(value);const match=responses.find(item=>item.test.test(n));setTimeout(()=>{add(match?match.text:"Posso ajudar com o Vértice Saúde, suas versões Gratuita e Pro, projetos comerciais, residenciais, estabelecimentos sujeitos à Vigilância Sanitária, avaliações, perícias e informações sobre a Vértice. Para analisar uma situação específica, o melhor caminho é falar com o Arq. Mateus.");if(match?.cta||!match)cta();else quick(match.quick||["Conhecer o Vértice Saúde","Quero pedir um orçamento","Falar com o arquiteto","Conhecer outros serviços"])},260)}
-  document.readyState==="loading"?document.addEventListener("DOMContentLoaded",init):init();
+
+  function cta(){
+    const box = add("Deseja conversar diretamente com o Arq. Mateus?");
+    const link = document.createElement("a");
+    link.className = "nexo-whatsapp";
+    link.href = whatsapp();
+    link.target = "_blank";
+    link.rel = "noopener";
+    link.textContent = "Continuar pelo WhatsApp →";
+    box.append(link);
+  }
+
+  function welcome(){
+    state.started = true;
+    add("Olá! Eu sou o <strong>Vito</strong>, assistente virtual da Vértice. Posso explicar os serviços, as qualificações do Arq. Mateus e apresentar o Vértice Saúde, incluindo suas funções e as versões <strong>Gratuita</strong> e <strong>Pro</strong>.");
+    add("Escolha uma das opções abaixo ou escreva sua dúvida:");
+    quick(initialQuick);
+  }
+
+  function handle(value){
+    clearQuick();
+    add(value, "user");
+    state.userMessages.push(value);
+
+    const normalized = normalize(value);
+    if(/^(menu principal|voltar ao menu principal|outras opcoes|outras opções)$/.test(normalized)){
+      setTimeout(() => {
+        add("Claro. Escolha o assunto que deseja conhecer:");
+        quick(initialQuick);
+      }, 180);
+      return;
+    }
+
+    const match = responses.find(item => item.test.test(normalized));
+
+    setTimeout(() => {
+      if(match){
+        add(match.text);
+        if(match.cta) cta();
+        quick(match.quick || initialQuick);
+        return;
+      }
+
+      add("Posso ajudar com o Vértice Saúde, suas versões Gratuita e Pro, projetos comerciais, residenciais, estabelecimentos sujeitos à Vigilância Sanitária, avaliações, perícias e informações sobre a Vértice. Escolha uma opção abaixo para continuar.");
+      quick(initialQuick);
+    }, 260);
+  }
+
+  document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", init) : init();
 })();
