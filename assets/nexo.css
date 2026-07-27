@@ -86,3 +86,74 @@
     padding:0 12px!important;
   }
 }
+
+/* Centralização vertical de todos os botões e links de ação do site */
+.header>.header-cta,
+.header .header-cta,
+.header .vs-app-header-button,
+.hero .btn,
+.hero .sub-link,
+.hero .vs-app-hero-button,
+.cta .btn,
+.project-link,
+.text-link,
+.google-link,
+.nexo-open-inline,
+.nexo-whatsapp,
+.vs-actions a,
+.vs-actions button,
+.vs-responsibility a,
+.vs-download button,
+.vs-home-link,
+a[class$="-button"],
+button:not(.plan-zoom):not(.gf-facade-trigger){
+  box-sizing:border-box!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  line-height:1.15!important;
+  vertical-align:middle!important;
+}
+
+.header>.header-cta,
+.header .header-cta{
+  justify-content:center!important;
+  align-self:center!important;
+  height:46px!important;
+  min-height:46px!important;
+  margin-top:0!important;
+  margin-bottom:0!important;
+  padding-top:0!important;
+  padding-bottom:0!important;
+  text-align:center!important;
+}
+
+button:not(.plan-zoom):not(.gf-facade-trigger),
+.nexo-open-inline,
+.nexo-whatsapp,
+.google-link{
+  justify-content:center!important;
+  text-align:center!important;
+}
+
+.header-cta>span,
+.btn>span,
+.sub-link>span,
+.project-link>span,
+.google-link>span,
+.vs-actions a>i,
+.vs-actions button>i,
+.vs-responsibility a>i,
+.vs-download button>i{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  line-height:1!important;
+}
+
+@media(max-width:760px){
+  .header>.header-cta,
+  .header .header-cta{
+    height:42px!important;
+    min-height:42px!important;
+  }
+}
