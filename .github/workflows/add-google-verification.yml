@@ -1,0 +1,47 @@
+name: Adicionar verificação do Google
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/add-google-verification.yml
+
+permissions:
+  contents: write
+
+jobs:
+  add-verification:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+
+      - name: Inserir meta tag de verificação
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path("index.html")
+          html = path.read_text(encoding="utf-8")
+          tag = '<meta name="google-site-verification" content="m09uQI0pRkoBUjiItpsMLzSLTq0PDIACNzEUaL5go9g" />'
+
+          if tag not in html:
+              anchor = '  <meta name="viewport" content="width=device-width,initial-scale=1">'
+              if anchor not in html:
+                  raise SystemExit("Não foi possível localizar a meta viewport no index.html")
+              html = html.replace(anchor, anchor + "\n  " + tag, 1)
+              path.write_text(html, encoding="utf-8")
+          PY
+
+      - name: Publicar alteração
+        run: |
+          if git diff --quiet; then
+            echo "A meta tag já estava presente."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Adiciona verificação do Google Search Console"
+          git push
