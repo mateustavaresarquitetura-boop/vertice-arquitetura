@@ -45,10 +45,33 @@
       canonical: `${baseUrl}/vertice-saude.html`,
       image: `${baseUrl}/assets/logo-vertice-colorida-transparente.png`,
       type: "website"
+    },
+    "biblioteca-normativa.html": {
+      title: "Biblioteca Normativa | Vértice Arquitetura e Avaliações",
+      description: "Referências oficiais e institucionais para projetos de saúde, acessibilidade, incêndio, resíduos, urbanismo, avaliações, perícias e exercício profissional.",
+      canonical: `${baseUrl}/biblioteca-normativa.html`,
+      image: `${baseUrl}/assets/logo-vertice-colorida-transparente.png`,
+      type: "website"
     }
   };
 
   const page = pages[pageKey] || pages["index.html"];
+
+  const mountLibraryNav = () => {
+    document.querySelectorAll(".header nav").forEach(nav => {
+      if(nav.querySelector('a[href="biblioteca-normativa.html"]')) return;
+
+      const link = document.createElement("a");
+      link.href = "biblioteca-normativa.html";
+      link.textContent = nav.closest(".menu") ? "Biblioteca Normativa" : "Biblioteca";
+      if(pageKey === "biblioteca-normativa.html") link.setAttribute("aria-current", "page");
+
+      const reference = nav.querySelector('a[href="sobre.html"]') || nav.querySelector('a[href="contato.html"]');
+      reference ? nav.insertBefore(link, reference) : nav.append(link);
+    });
+  };
+
+  mountLibraryNav();
 
   const setMeta = (selector, attributes) => {
     let element = document.head.querySelector(selector);
@@ -157,7 +180,8 @@
       "Projetos comerciais",
       "Projetos residenciais",
       "Avaliações imobiliárias",
-      "Perícias e vistorias"
+      "Perícias e vistorias",
+      "Biblioteca normativa"
     ],
     makesOffer: [
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Projetos para estabelecimentos de saúde e de interesse à saúde" } },
@@ -175,8 +199,16 @@
     publisher: { "@id": `${baseUrl}/#empresa` }
   };
 
+  const pageType = pageKey === "sobre.html"
+    ? "AboutPage"
+    : pageKey === "contato.html"
+      ? "ContactPage"
+      : pageKey === "biblioteca-normativa.html"
+        ? "CollectionPage"
+        : "WebPage";
+
   const webPage = {
-    "@type": pageKey === "sobre.html" ? "AboutPage" : pageKey === "contato.html" ? "ContactPage" : "WebPage",
+    "@type": pageType,
     "@id": `${page.canonical}#webpage`,
     url: page.canonical,
     name: page.title,
@@ -203,6 +235,31 @@
         { "@type": "Offer", name: "Versão Gratuita", price: "0", priceCurrency: "BRL", availability: "https://schema.org/PreOrder" },
         { "@type": "Offer", name: "Versão Pro", description: "Modalidade profissional ampliada, com valores e condições a serem divulgados no lançamento.", availability: "https://schema.org/PreOrder" }
       ]
+    });
+  }
+
+  if (pageKey === "biblioteca-normativa.html") {
+    graph.push({
+      "@type": "ItemList",
+      "@id": `${baseUrl}/biblioteca-normativa.html#referencias`,
+      name: "Biblioteca Normativa da Vértice",
+      description: page.description,
+      numberOfItems: 9,
+      itemListElement: [
+        "Saúde e Vigilância Sanitária",
+        "Minas Gerais e Fisioterapia",
+        "Acessibilidade",
+        "Incêndio e Pânico",
+        "Resíduos de Serviços de Saúde",
+        "Normas Regulamentadoras",
+        "Urbanismo e Obras",
+        "Avaliações e Perícias",
+        "Normas Técnicas Complementares"
+      ].map((name, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name
+      }))
     });
   }
 
