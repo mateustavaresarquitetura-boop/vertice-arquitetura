@@ -193,9 +193,13 @@ body:not(:has(#inicio)) main>.hero p:not(.breadcrumb){
 .category-card{
   border:1px solid var(--vt-line)!important;
   border-radius:var(--vt-radius)!important;
+  color:var(--vt-deep)!important;
   background:var(--vt-paper)!important;
   box-shadow:none!important;
 }
+.category-card .num{color:var(--vt-gold)!important}
+.category-card h2{color:var(--vt-deep)!important}
+.category-card p{color:#515b62!important}
 .category-card:hover{border-color:var(--vt-gold)!important;box-shadow:var(--vt-shadow)!important;transform:translateY(-4px)}
 .project-gallery,.gallery-wide,.family-gallery,.cravo-gallery{gap:18px}
 .project-gallery img,.gallery-wide img,.family-gallery img,.cravo-gallery img,.gf-facade{
