@@ -6,7 +6,7 @@
     if(document.getElementById("vertice-seo-script")) return;
     const script = document.createElement("script");
     script.id = "vertice-seo-script";
-    script.src = "assets/seo.js";
+    script.src = "assets/seo.js?v=20260809-3";
     script.defer = true;
     document.head.append(script);
   }
@@ -24,9 +24,9 @@
     {test:/^projetos e servicos$|tipos de projeto|quais projetos|servicos da vertice/,text:"A <strong>Vértice</strong> atua com projetos para estabelecimentos de saúde e de interesse à saúde, projetos comerciais, residenciais e de interiores, além de avaliações imobiliárias, perícias, vistorias, laudos e pareceres técnicos. Escolha uma área para continuar.",quick:projectQuick},
     {test:/^iniciar atendimento do projeto$|^orcamento de projeto$|tenho um projeto|preciso de um projeto|quero fazer um projeto|gostaria de um projeto/,text:"Perfeito. Vou organizar as informações iniciais do seu projeto para que o Arq. Mateus receba um resumo objetivo pelo WhatsApp.",startLead:true},
     {test:/^sobre o arq\. mateus$|sobre o arquiteto|quem e mateus|quem e o arquiteto/,text:"Mateus José de Andrade Tavares é <strong>Arquiteto e Urbanista, CAU A302785-6</strong>, proprietário e responsável técnico da Vértice. Sua experiência na enfermagem e na segurança do paciente contribui especialmente para projetos de saúde, unindo visão assistencial, técnica e arquitetônica.",quick:profileQuick},
-    {test:/^contatos e atendimento$|nossos contatos|formas de contato|canais de atendimento/,text:"Você pode falar com a Vértice pelo <strong>WhatsApp (31) 97534-4356</strong>, pelo e-mail <strong>mateustavares.arquitetura@gmail.com</strong> ou pelos perfis <strong>@arquiteto.mateustavares</strong> e <strong>@vertice_arquiteturaeavaliacoes</strong> no Instagram.<br><br>Atendimento: segunda a sexta, das 08h às 19h30; sábado, das 09h às 13h.",quick:contactQuick,cta:true},
+    {test:/^contatos e atendimento$|nossos contatos|formas de contato|canais de atendimento/,text:"Você pode falar com a Vértice pelo <strong>WhatsApp (31) 97534-4356</strong>, pelo e-mail <strong>vertice.arquitetura.contato@gmail.com</strong> ou pelos perfis <strong>@arquiteto.mateustavares</strong> e <strong>@vertice_arquiteturaeavaliacoes</strong> no Instagram.<br><br>Atendimento: segunda a sexta, das 08h às 19h30; sábado, das 09h às 13h.",quick:contactQuick,cta:true},
     {test:/^whatsapp$|numero do whatsapp|qual o whatsapp/,text:"O WhatsApp da Vértice é <strong>(31) 97534-4356</strong>. Você pode iniciar o atendimento pelo botão abaixo.",quick:contactQuick,cta:true},
-    {test:/^e-mail$|^email$|qual o email/,text:"O e-mail da Vértice é <strong>mateustavares.arquitetura@gmail.com</strong>. Ele é indicado para envio de documentos, propostas e apresentações mais detalhadas.",quick:contactQuick},
+    {test:/^e-mail$|^email$|qual o email/,text:"O e-mail da Vértice é <strong>vertice.arquitetura.contato@gmail.com</strong>. Ele é indicado para envio de documentos, propostas e apresentações mais detalhadas.",quick:contactQuick},
     {test:/^instagram$|redes sociais/,text:"A Vértice está no Instagram em <strong>@arquiteto.mateustavares</strong> e <strong>@vertice_arquiteturaeavaliacoes</strong>.",quick:contactQuick},
     {test:/horario de atendimento|horario|que horas atende/,text:"O atendimento da Vértice ocorre de <strong>segunda a sexta, das 08h às 19h30</strong>, e aos <strong>sábados, das 09h às 13h</strong>.",quick:contactQuick},
     {test:/contratar (o )?pro|assinar (o )?pro|quero (o )?pro|tenho interesse (no|na) pro/,text:"O <strong>Vértice Saúde Pro</strong> será a modalidade destinada ao uso profissional ampliado. Os recursos definitivos, valores e condições de assinatura serão apresentados no lançamento. Posso encaminhar seu interesse para a Vértice.",quick:appQuick,cta:true},

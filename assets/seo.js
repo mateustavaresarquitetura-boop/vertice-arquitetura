@@ -73,6 +73,12 @@
 
   mountLibraryNav();
 
+  document.querySelectorAll("details.menu, details.pv-menu").forEach(menu => {
+    menu.querySelectorAll("a[href]").forEach(link => {
+      link.addEventListener("click", () => menu.removeAttribute("open"));
+    });
+  });
+
   const setMeta = (selector, attributes) => {
     let element = document.head.querySelector(selector);
     if (!element) {
@@ -129,7 +135,7 @@
     image: `${baseUrl}/assets/gf-clinica-fachada.webp`,
     description: "Escritório de arquitetura com atuação em projetos para saúde, estabelecimentos de interesse à saúde, projetos comerciais e residenciais, avaliações imobiliárias e perícias.",
     telephone: "+55 31 97534-4356",
-    email: "mateustavares.arquitetura@gmail.com",
+    email: "vertice.arquitetura.contato@gmail.com",
     priceRange: "Sob consulta",
     founder: {
       "@type": "Person",
