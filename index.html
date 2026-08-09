@@ -164,6 +164,6 @@
   <script>
     (()=>{const modal=document.getElementById('gf-facade-modal'),close=document.getElementById('close-gf-facade'),openers=[document.getElementById('open-gf-facade'),...document.querySelectorAll('[data-open-facade]')].filter(Boolean);const hide=()=>{modal.hidden=true;document.body.classList.remove('pv-modal-open');openers[0]?.focus()};const show=()=>{modal.hidden=false;document.body.classList.add('pv-modal-open');close.focus()};openers.forEach(el=>el.addEventListener('click',show));close.addEventListener('click',hide);modal.addEventListener('click',e=>{if(e.target===modal)hide()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.hidden)hide()})})();
   </script>
-  <script src="assets/nexo.js?v=20260809-3"></script>
+  <script src="assets/nexo.js?v=20260809-4"></script>
 </body>
 </html>
