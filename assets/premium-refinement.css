@@ -229,6 +229,107 @@ body:not(.premium-home) .item p{color:var(--pr-text)!important}
 .library-page .library-heading p,.library-page .library-legal p,.library-page .reference-card p{color:var(--pr-text)!important}
 .library-page .reference-card{color:var(--pr-ink)!important;background:#fff!important}
 
+/* Ativos de marca: nunca recebem fundo opaco */
+.brand-logo,
+.pv-brand img,
+.pv-footer-brand img,
+.vs-product-lockup img,
+.vs-app-brand img,
+.vs-home-preview-brand img,
+.assistant-avatar,
+.assistant-avatar img,
+.nexo-launcher img,
+.nexo-head img{
+  background-color:transparent!important;
+  box-shadow:none!important;
+}
+.assistant-avatar img{
+  border:0!important;
+  outline:0!important;
+  border-radius:0!important;
+  filter:drop-shadow(0 18px 24px rgba(0,0,0,.2));
+}
+.nexo-launcher img,.nexo-head img{object-fit:contain;background:transparent!important}
+
+/* Contrato de contraste — superfícies escuras */
+.contact-intro .contact-intro-copy .title,
+.contact-intro .contact-intro-copy h2,
+.contact-intro .contact-intro-copy strong,
+.vs-responsibility h2,
+.vs-download h2,
+.library-hero h1,
+.library-hero h2,
+.library-hero h3,
+.pv-hero h1,
+.pv-services h2,
+.pv-services h3,
+.pv-health h2,
+.pv-about h2,
+.pv-final-cta h2,
+.pv-footer h3{color:#fff!important}
+.contact-intro .contact-intro-copy>p:not(.eyebrow),
+.vs-responsibility p,
+.vs-download p,
+.library-hero p,
+.pv-hero .pv-lead,
+.pv-services p,
+.pv-health p,
+.pv-about p,
+.pv-final-cta p,
+.pv-footer p,
+.pv-footer a,
+.pv-footer span{color:rgba(255,255,255,.78)!important}
+.contact-intro .eyebrow,
+.contact-intro .assistant-signature span,
+.vs-responsibility .vs-eyebrow,
+.vs-download .vs-eyebrow,
+.library-hero .library-eyebrow,
+.pv-hero .pv-eyebrow,
+.pv-services .pv-eyebrow,
+.pv-health .pv-eyebrow,
+.pv-about .pv-eyebrow,
+.pv-final-cta .pv-eyebrow,
+.pv-footer h3{color:var(--pr-gold-light)!important}
+
+/* Contrato de contraste — superfícies claras */
+.section:not(.contact-intro) h2,
+.section:not(.contact-intro) h3,
+.card h2,.card h3,
+.contact-card h2,
+.category-card h2,
+.commercial-case h2,
+.profile h2,
+.vs-hero-copy h1,.vs-hero-copy h2,
+.vs-process h2,.vs-process h3,
+.vs-features h2,.vs-features h3,
+.vs-gallery h2,.vs-gallery h3,
+.library-topics h2,.library-topics h3,
+.library-catalog h2,.library-catalog h3,
+.library-legal h2{color:var(--pr-ink)!important}
+.section:not(.contact-intro) p,
+.card p,
+.contact-card p,
+.category-card p,
+.commercial-case p,
+.profile p,
+.vs-hero-copy p,
+.vs-process p,
+.vs-features p,
+.vs-gallery p,
+.library-topics p,
+.library-catalog p,
+.library-legal p{color:var(--pr-text)!important}
+
+/* Reaplica o texto claro nos blocos escuros após as regras de superfície clara */
+.contact-intro .contact-intro-copy .title,
+.contact-intro .contact-intro-copy h2,
+.contact-intro .contact-intro-copy strong,
+.contact-intro .contact-intro-copy>p:not(.eyebrow),
+.vs-responsibility h2,.vs-responsibility p,
+.vs-download h2,.vs-download p{color:#fff!important}
+.contact-intro .contact-intro-copy>p:not(.eyebrow),
+.vs-responsibility p,.vs-download p{color:rgba(255,255,255,.78)!important}
+
 @media(max-width:900px){
   body:not(.premium-home) .wrap{width:min(100% - 44px,1180px)}
   body:not(.premium-home) .split{gap:48px}
