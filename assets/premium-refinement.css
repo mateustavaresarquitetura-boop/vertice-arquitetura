@@ -329,6 +329,8 @@ body:not(.premium-home) .item p{color:var(--pr-text)!important}
 .vs-download h2,.vs-download p{color:#fff!important}
 .contact-intro .contact-intro-copy>p:not(.eyebrow),
 .vs-responsibility p,.vs-download p{color:rgba(255,255,255,.78)!important}
+.section .contact-intro .eyebrow,
+.section .contact-intro .assistant-signature span{color:var(--pr-gold-light)!important}
 
 @media(max-width:900px){
   body:not(.premium-home) .wrap{width:min(100% - 44px,1180px)}
