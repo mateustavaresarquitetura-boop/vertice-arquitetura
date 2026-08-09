@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="theme-color" content="#052b48">
+  <title>Documentação do projeto | Vértice</title>
+  <style>
+    :root{--blue:#0a6fb3;--deep:#052b48;--deep2:#063e67;--gold:#b28a3e;--gold2:#d4b571;--ink:#2b2f33;--paper:#f4f3ef;--white:#fff;--muted:#697176;--line:#dfe2e2;--ok:#1f7a54;--warn:#9a6518;--danger:#a83d3d}
+    *{box-sizing:border-box}body{margin:0;background:linear-gradient(145deg,#f4f3ef,#eef1f2);color:var(--ink);font-family:Inter,"Segoe UI",Arial,sans-serif;-webkit-font-smoothing:antialiased}button,input{font:inherit}button{cursor:pointer}.shell{min-height:100vh}.top{background:var(--deep);color:#fff;border-bottom:4px solid var(--gold)}.top-in{width:min(1060px,calc(100% - 40px));min-height:92px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:14px}.mark{display:grid;place-items:center;width:44px;height:44px;border:1px solid rgba(255,255,255,.36);color:var(--gold2);font:400 27px Georgia,serif}.brand strong{display:block;letter-spacing:.13em;font-size:13px}.brand small{display:block;margin-top:5px;color:rgba(255,255,255,.62);font-size:11px}.secure{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.72);font-size:11px}.secure:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold2)}
+    main{width:min(1060px,calc(100% - 40px));margin:0 auto;padding:58px 0 90px}.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;margin-bottom:26px}.intro,.summary,.panel{background:#fff;border:1px solid var(--line)}.intro{padding:38px}.eyebrow{margin:0 0 12px;color:var(--gold);font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}.intro h1{margin:0;color:var(--deep);font:400 clamp(34px,5vw,54px)/1.05 Georgia,serif;letter-spacing:-.035em}.intro p{margin:19px 0 0;max-width:680px;color:var(--muted);font-size:15px;line-height:1.72}.summary{padding:28px;display:flex;flex-direction:column;justify-content:center}.summary small{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.1em}.summary strong{margin-top:8px;color:var(--deep);font:400 24px Georgia,serif}.summary .code{margin-top:20px;padding-top:16px;border-top:1px solid var(--line);font:700 12px monospace;color:var(--blue)}
+    .panel{padding:32px}.state{display:grid;place-items:center;min-height:260px;text-align:center}.spinner{width:34px;height:34px;border:3px solid #dde3e6;border-top-color:var(--blue);border-radius:50%;animation:spin .9s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}.state h2{margin:18px 0 7px;color:var(--deep);font:400 26px Georgia,serif}.state p{max-width:560px;margin:0;color:var(--muted);line-height:1.6}.error-box{padding:20px;border-left:4px solid var(--danger);background:#fff5f5}.error-box strong{color:var(--danger)}
+    .notice-head{display:flex;justify-content:space-between;gap:20px;align-items:start;padding-bottom:22px;border-bottom:1px solid var(--line)}.notice-head h2{margin:0;color:var(--deep);font:400 30px Georgia,serif}.badge{display:inline-flex;align-items:center;min-height:28px;padding:0 10px;border-radius:99px;background:#edf5f9;color:var(--deep2);font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}.notice-body{margin:26px 0;padding:24px;background:#f8f8f6;border:1px solid var(--line);white-space:pre-wrap;color:#4d565b;font-size:14px;line-height:1.75;max-height:380px;overflow:auto}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.field{display:flex;flex-direction:column;gap:7px}.field span{font-size:12px;font-weight:700}.field input{width:100%;min-height:46px;border:1px solid #ccd3d6;padding:0 13px;background:#fff;color:var(--ink);border-radius:4px}.check{display:flex;align-items:flex-start;gap:11px;margin:20px 0}.check input{margin-top:3px}.check label{font-size:13px;line-height:1.55}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border:0;background:var(--gold);color:#fff;font-weight:800;font-size:12px}.btn:hover{background:var(--gold2);color:var(--deep)}.btn:disabled{opacity:.55;cursor:not-allowed}
+    .items-head{display:flex;align-items:end;justify-content:space-between;gap:20px}.items-head h2{margin:0;color:var(--deep);font:400 30px Georgia,serif}.items-head p{margin:8px 0 0;color:var(--muted);font-size:13px}.items{display:grid;gap:10px;margin-top:22px}.item{padding:17px 18px;border:1px solid var(--line);background:#fff}.item-top{display:flex;align-items:start;justify-content:space-between;gap:15px}.item h3{margin:0;color:var(--deep);font-size:14px}.item p{margin:7px 0 0;color:var(--muted);font-size:12px;line-height:1.55}.why{margin-top:11px;padding-top:10px;border-top:1px dashed var(--line);font-size:11px;color:#59646a}.form-wrap{margin-top:28px;padding-top:28px;border-top:1px solid var(--line)}.form-wrap h2{margin:0 0 7px;color:var(--deep);font:400 27px Georgia,serif}.form-wrap>p{margin:0 0 18px;color:var(--muted);font-size:13px}.fillout{width:100%;min-height:720px;border:1px solid var(--line);background:#fff}.empty-form{padding:24px;border-left:4px solid var(--warn);background:#fffaf0;color:#75501c;font-size:13px;line-height:1.6}.footer-note{margin-top:18px;color:var(--muted);font-size:10px;text-align:center;line-height:1.6}
+    @media(max-width:760px){.top-in{min-height:78px}.secure{display:none}main{padding-top:28px}.hero{grid-template-columns:1fr}.intro{padding:28px}.summary{padding:21px}.panel{padding:23px}.form-grid{grid-template-columns:1fr}.items-head,.notice-head{align-items:start;flex-direction:column}.fillout{min-height:850px}}
+  </style>
+</head>
+<body>
+<div class="shell">
+  <header class="top"><div class="top-in"><div class="brand"><div class="mark">V</div><div><strong>VÉRTICE</strong><small>Arquitetura e Avaliações · Documentação segura</small></div></div><div class="secure">Acesso individual e temporário</div></div></header>
+  <main>
+    <section class="hero">
+      <div class="intro"><p class="eyebrow">Portal de documentação</p><h1>Documentos do seu projeto.</h1><p>Confira a solicitação do escritório responsável, registre sua ciência sobre o tratamento de dados e envie somente os documentos necessários ao seu processo.</p></div>
+      <div class="summary"><small>Destinatário</small><strong data-recipient>Carregando…</strong><div class="code" data-code>Solicitação segura</div></div>
+    </section>
+    <section class="panel" data-app><div class="state"><div><div class="spinner" aria-hidden="true"></div><h2>Carregando solicitação</h2><p>Validando o link e preparando os documentos solicitados.</p></div></div></section>
+    <p class="footer-note">Este ambiente não exibe documentos técnicos internos do escritório. Arquivos liberados para assinatura ou entrega final seguem fluxos próprios e rastreáveis.</p>
+  </main>
+</div>
+<script>
+(() => {
+  "use strict";
+  // HML: trocar pelo endpoint de produção somente após homologação e promoção formal.
+  const GATEWAY_URL = "https://xxekmpouuiobfydntxrs.supabase.co/functions/v1/document-request-gateway";
+  const token = new URLSearchParams(location.search).get("s") || "";
+  const app = document.querySelector("[data-app]");
+  const recipient = document.querySelector("[data-recipient]");
+  const code = document.querySelector("[data-code]");
+  let current = null;
+
+  if (!/^[A-Za-z0-9_-]{40,80}$/.test(token)) {
+    showError("Link inválido", "A solicitação está incompleta ou o endereço foi alterado. Peça ao escritório responsável um novo link.");
+    return;
+  }
+
+  load();
+
+  async function load() {
+    setLoading("Validando a solicitação", "Conferindo validade, privacidade e itens documentais.");
+    try {
+      const response = await fetch(`${GATEWAY_URL}?action=view&token=${encodeURIComponent(token)}`, { headers: { "accept": "application/json" }, cache: "no-store" });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(data.error || "Não foi possível abrir a solicitação.");
+      current = data;
+      recipient.textContent = data.recipientName || "Cliente";
+      code.textContent = data.requestCode || "Solicitação documental";
+      render();
+    } catch (error) {
+      showError("Não foi possível abrir a solicitação", error instanceof Error ? error.message : "Tente novamente ou solicite novo link.");
+    }
+  }
+
+  function render() {
+    if (!current) return;
+    if (!current.privacy?.acknowledged) renderPrivacy();
+    else renderCollection();
+  }
+
+  function renderPrivacy() {
+    app.innerHTML = `
+      <div class="notice-head"><div><p class="eyebrow">Proteção de dados</p><h2 data-notice-title></h2></div><span class="badge" data-notice-version></span></div>
+      <div class="notice-body" data-notice-body></div>
+      <div class="form-grid">
+        <label class="field"><span>Nome de quem está respondendo</span><input name="actorName" autocomplete="name" maxlength="180" required></label>
+        <label class="field"><span>E-mail</span><input name="actorEmail" type="email" autocomplete="email" maxlength="254"></label>
+      </div>
+      <div class="check"><input id="privacy-check" type="checkbox"><label for="privacy-check">Li e estou ciente do Aviso de Privacidade e Tratamento de Dados Pessoais apresentado acima.</label></div>
+      <button class="btn" type="button" data-ack disabled>Continuar para os documentos</button>`;
+    app.querySelector("[data-notice-title]").textContent = current.privacy.title || "Aviso de Privacidade";
+    app.querySelector("[data-notice-version]").textContent = current.privacy.version ? `Versão ${current.privacy.version}` : "Versão vigente";
+    app.querySelector("[data-notice-body]").textContent = current.privacy.body || "";
+    const check = app.querySelector("#privacy-check");
+    const button = app.querySelector("[data-ack]");
+    check.addEventListener("change", () => { button.disabled = !check.checked; });
+    button.addEventListener("click", acknowledge);
+  }
+
+  async function acknowledge() {
+    const button = app.querySelector("[data-ack]");
+    const actorName = app.querySelector('[name="actorName"]').value.trim();
+    const actorEmail = app.querySelector('[name="actorEmail"]').value.trim();
+    if (!actorName) { app.querySelector('[name="actorName"]').focus(); return; }
+    button.disabled = true; button.textContent = "Registrando ciência…";
+    try {
+      const response = await fetch(`${GATEWAY_URL}?action=acknowledge`, { method: "POST", headers: { "content-type": "application/json", "accept": "application/json" }, body: JSON.stringify({ token, actorName, actorEmail }) });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(data.error || "Não foi possível registrar a ciência.");
+      await load();
+    } catch (error) {
+      alert(error instanceof Error ? error.message : "Não foi possível registrar a ciência.");
+      button.disabled = false; button.textContent = "Continuar para os documentos";
+    }
+  }
+
+  function renderCollection() {
+    const items = Array.isArray(current.items) ? current.items : [];
+    app.innerHTML = `<div class="items-head"><div><p class="eyebrow">Documentação solicitada</p><h2>Itens desta solicitação</h2><p>${items.length} item(ns) preparado(s) pelo escritório responsável.</p></div><span class="badge">Privacidade registrada</span></div><div class="items" data-items></div><div class="form-wrap" data-form-wrap></div>`;
+    const list = app.querySelector("[data-items]");
+    if (!items.length) list.innerHTML = '<div class="empty-form">Nenhum documento foi liberado para coleta nesta solicitação.</div>';
+    else for (const item of items) list.appendChild(itemNode(item));
+    const formWrap = app.querySelector("[data-form-wrap]");
+    const safeUrl = filloutUrl(current.collection?.url || "");
+    if (!safeUrl) {
+      formWrap.innerHTML = '<h2>Envio dos arquivos</h2><div class="empty-form">O formulário de envio ainda não foi liberado pelo escritório. Você pode fechar esta página e utilizar o mesmo link quando receber a confirmação.</div>';
+      return;
+    }
+    formWrap.innerHTML = '<h2>Preencha e envie</h2><p>As perguntas abaixo mudam conforme o seu caso. Você não precisa enviar documentos marcados como não aplicáveis.</p>';
+    const frame = document.createElement("iframe"); frame.className = "fillout"; frame.title = "Formulário seguro de envio de documentos"; frame.loading = "lazy"; frame.referrerPolicy = "strict-origin-when-cross-origin"; frame.allow = "clipboard-write"; frame.src = safeUrl;
+    formWrap.appendChild(frame);
+  }
+
+  function itemNode(item) {
+    const article = document.createElement("article"); article.className = "item";
+    const top = document.createElement("div"); top.className = "item-top";
+    const copy = document.createElement("div"); const title = document.createElement("h3"); title.textContent = item.documentType || "Documento"; const prompt = document.createElement("p"); prompt.textContent = item.prompt || ""; copy.append(title, prompt);
+    const badge = document.createElement("span"); badge.className = "badge"; badge.textContent = classificationLabel(item.classification); top.append(copy, badge); article.appendChild(top);
+    if (item.whyRequested) { const why = document.createElement("div"); why.className = "why"; why.textContent = `Por que solicitamos: ${item.whyRequested}`; article.appendChild(why); }
+    return article;
+  }
+
+  function classificationLabel(value) { return ({ required:"Obrigatório", conditional:"Condicional", recommended:"Recomendado" })[value] || "Conforme análise"; }
+  function filloutUrl(value) { try { const url = new URL(value); if (url.protocol !== "https:") return ""; if (url.hostname === "fillout.com" || url.hostname.endsWith(".fillout.com")) return url.toString(); } catch {} return ""; }
+  function setLoading(title, message) { app.innerHTML = '<div class="state"><div><div class="spinner" aria-hidden="true"></div><h2></h2><p></p></div></div>'; app.querySelector("h2").textContent = title; app.querySelector("p").textContent = message; }
+  function showError(title, message) { recipient.textContent = "Solicitação indisponível"; code.textContent = "Acesso não liberado"; app.innerHTML = '<div class="error-box"><strong></strong><p></p></div>'; app.querySelector("strong").textContent = title; app.querySelector("p").textContent = message; }
+})();
+</script>
+</body>
+</html>
