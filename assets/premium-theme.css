@@ -1,0 +1,364 @@
+/* Vértice Arquitetura e Avaliações — identidade premium 2026
+   Camada visual compartilhada. Não altera conteúdo, imagens ou funcionalidades. */
+
+:root{
+  --vt-blue:#0a6fb3;
+  --vt-deep:#052b48;
+  --vt-deep-soft:#0b344f;
+  --vt-graphite:#2b2f33;
+  --vt-gold:#b28a3e;
+  --vt-gold-light:#d1b06a;
+  --vt-ivory:#f6f3ed;
+  --vt-paper:#fbfaf7;
+  --vt-mist:#e9ecef;
+  --vt-line:#d8d6cf;
+  --vt-muted:#667078;
+  --vt-white:#fff;
+  --vt-radius:6px;
+  --vt-shadow:0 24px 60px rgba(20,28,34,.09);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--vt-graphite);
+  background:var(--vt-ivory);
+  font-family:Montserrat,Poppins,"Segoe UI",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+::selection{color:var(--vt-white);background:var(--vt-gold)}
+:focus-visible{outline:2px solid var(--vt-gold);outline-offset:4px}
+.wrap,.vs-wrap{width:min(1240px,calc(100% - 64px));margin-inline:auto}
+
+/* Tipografia e ritmo */
+.eyebrow,.vs-eyebrow{
+  color:var(--vt-gold)!important;
+  font-size:11px!important;
+  font-weight:800!important;
+  letter-spacing:.19em!important;
+  text-transform:uppercase;
+}
+.title,.section-title,.hero h1,.cta h2,.library-heading h2,.vs-section-heading h2{
+  font-family:Georgia,"Times New Roman",serif!important;
+  font-weight:400!important;
+  letter-spacing:-.035em!important;
+}
+.section{padding:112px 0}
+.section.white{background:var(--vt-paper)}
+.lead,.section-lead{color:var(--vt-muted);font-size:16px;line-height:1.82}
+
+/* Cabeçalho institucional */
+body:not(:has(#inicio))>.header{
+  position:relative;
+  z-index:50;
+  min-height:94px;
+  padding-inline:max(32px,calc((100vw - 1240px)/2));
+  border:0;
+  border-bottom:1px solid rgba(178,138,62,.42);
+  background:rgba(251,250,247,.97);
+  box-shadow:0 10px 32px rgba(29,36,41,.035);
+  backdrop-filter:blur(18px);
+}
+body:not(:has(#inicio))>.header .brand-logo{width:190px}
+body:not(:has(#inicio))>.header .nav{gap:30px}
+body:not(:has(#inicio))>.header .nav a{
+  position:relative;
+  color:#465058;
+  font-size:13px;
+  font-weight:650;
+  letter-spacing:.015em;
+}
+body:not(:has(#inicio))>.header .nav a:after{
+  content:"";
+  position:absolute;
+  left:0;right:100%;bottom:-13px;
+  height:1px;
+  background:var(--vt-gold);
+  transition:right .22s ease;
+}
+body:not(:has(#inicio))>.header .nav a:hover:after,
+body:not(:has(#inicio))>.header .nav a[aria-current="page"]:after{right:0}
+body:not(:has(#inicio))>.header .nav a[aria-current="page"]{color:var(--vt-deep)}
+body:not(:has(#inicio))>.header .header-cta{
+  min-height:44px;
+  padding:0 20px;
+  border:1px solid var(--vt-deep);
+  border-radius:2px;
+  color:var(--vt-white);
+  background:var(--vt-deep);
+  font-size:12px;
+  font-weight:750;
+  letter-spacing:.025em;
+}
+body:not(:has(#inicio))>.header .header-cta:hover{border-color:var(--vt-gold);background:var(--vt-gold)}
+
+/* Cabeçalho da página inicial */
+body:has(#inicio)>.header{
+  height:96px;
+  border-bottom:1px solid rgba(209,176,106,.3);
+  background:rgba(5,36,58,.92);
+  backdrop-filter:blur(18px);
+}
+body:has(#inicio)>.header .brand-logo{width:194px}
+body:has(#inicio)>.header .nav a{font-size:13px;letter-spacing:.015em}
+body:has(#inicio)>.header .nav a:hover{color:var(--vt-gold-light)}
+body:has(#inicio)>.header .header-cta{
+  min-height:44px;
+  display:inline-flex;
+  align-items:center;
+  border-color:rgba(209,176,106,.65);
+  color:#fff;
+}
+body:has(#inicio)>.header .header-cta:hover{border-color:var(--vt-gold);background:var(--vt-gold);color:var(--vt-deep)}
+
+/* Hero interno — editorial e sóbrio */
+body:not(:has(#inicio)) main>.hero{
+  position:relative;
+  min-height:490px;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  color:var(--vt-graphite);
+  background:var(--vt-paper);
+  border-bottom:1px solid var(--vt-line);
+}
+body:not(:has(#inicio)) main>.hero:before{
+  content:"";
+  position:absolute;
+  inset:56px auto 56px max(24px,calc((100vw - 1240px)/2));
+  width:2px;
+  background:var(--vt-gold);
+}
+body:not(:has(#inicio)) main>.hero .wrap{padding:76px 0 76px 48px}
+body:not(:has(#inicio)) main>.hero .breadcrumb{
+  margin:0 0 28px;
+  color:var(--vt-gold);
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+body:not(:has(#inicio)) main>.hero h1{
+  max-width:940px;
+  margin:0;
+  color:var(--vt-deep);
+  font-size:clamp(48px,5.8vw,78px);
+  line-height:1.02;
+}
+body:not(:has(#inicio)) main>.hero p:not(.breadcrumb){
+  max-width:760px;
+  margin:30px 0 0;
+  color:var(--vt-muted);
+  font-size:17px;
+  line-height:1.78;
+}
+
+/* Home — nova composição, mesmos ativos */
+#inicio.hero{
+  min-height:820px;
+  background:var(--vt-deep)!important;
+}
+#inicio .hero-grid{
+  grid-template-columns:minmax(0,1.06fr) minmax(420px,.94fr);
+  gap:64px;
+  padding-top:188px;
+  padding-bottom:92px;
+}
+#inicio h1{max-width:730px;color:#fff}
+#inicio h1 em{color:var(--vt-gold-light)}
+#inicio .hero-lead{max-width:590px;color:rgba(255,255,255,.72)}
+#inicio .actions .btn{background:var(--vt-gold);border-color:var(--vt-gold)}
+#inicio .actions .btn:hover{color:var(--vt-deep);background:var(--vt-gold-light)}
+#inicio .visual{transform:translateY(12px)}
+#inicio .plan{border-radius:2px;box-shadow:0 32px 72px rgba(0,0,0,.33)}
+#inicio .credentials{border-color:rgba(209,176,106,.32);background:rgba(255,255,255,.035)}
+.trust{border-bottom:1px solid var(--vt-line);background:var(--vt-paper)}
+.trust-in{min-height:124px}
+.trust-list span{color:var(--vt-deep)}
+.services-head{align-items:flex-end}
+.service-grid{margin-top:64px;border-color:var(--vt-line);background:var(--vt-line)}
+.service{padding:40px;background:var(--vt-paper)}
+.service:hover,.service:focus-visible{background:var(--vt-deep)}
+.method{background:var(--vt-deep-soft)}
+.about-grid{gap:104px}
+.portrait{border:1px solid var(--vt-line);border-radius:2px;background:var(--vt-mist)}
+.qualification{border-left-color:var(--vt-gold);background:var(--vt-paper)}
+
+/* Projetos e imagens: apenas novo enquadramento visual */
+.project-categories{padding:88px 0 104px;background:var(--vt-ivory)}
+.category-grid{gap:18px}
+.category-card{
+  border:1px solid var(--vt-line)!important;
+  border-radius:var(--vt-radius)!important;
+  background:var(--vt-paper)!important;
+  box-shadow:none!important;
+}
+.category-card:hover{border-color:var(--vt-gold)!important;box-shadow:var(--vt-shadow)!important;transform:translateY(-4px)}
+.project-gallery,.gallery-wide,.family-gallery,.cravo-gallery{gap:18px}
+.project-gallery img,.gallery-wide img,.family-gallery img,.cravo-gallery img,.gf-facade{
+  border-radius:var(--vt-radius)!important;
+  box-shadow:none!important;
+}
+.commercial-case{
+  border:1px solid var(--vt-line)!important;
+  border-radius:var(--vt-radius)!important;
+  background:var(--vt-paper)!important;
+  box-shadow:none!important;
+}
+.case-meta,.approval-badge{border-color:rgba(178,138,62,.42)!important;background:var(--vt-ivory)!important}
+
+/* Cartões e blocos comuns */
+.grid{gap:18px}
+.card,.item,.contact-card{
+  border:1px solid var(--vt-line)!important;
+  border-radius:var(--vt-radius)!important;
+  background:var(--vt-paper)!important;
+  box-shadow:none!important;
+}
+.card{padding:36px!important}
+.card:hover,.card:focus-within,.contact-card:hover{
+  border-color:var(--vt-gold)!important;
+  box-shadow:var(--vt-shadow)!important;
+  transform:translateY(-3px);
+}
+.card h3,.item h3,.contact-card h2{color:var(--vt-deep)}
+.num{color:var(--vt-gold)!important}
+.split{gap:96px}
+.profile{
+  overflow:hidden;
+  border:1px solid var(--vt-line);
+  border-radius:var(--vt-radius);
+  background:var(--vt-paper);
+  box-shadow:var(--vt-shadow);
+}
+.profile-photo{filter:saturate(.92) contrast(1.02)}
+.profile-copy{padding:34px!important}
+
+/* Contato */
+.contact-intro{
+  border:1px solid var(--vt-line)!important;
+  border-radius:var(--vt-radius)!important;
+  background:var(--vt-deep)!important;
+  box-shadow:var(--vt-shadow)!important;
+}
+.contact-intro-copy{color:#fff}
+.contact-intro-copy .title,.contact-intro-copy p{color:#fff!important}
+.assistant-signature span{color:rgba(255,255,255,.66)!important}
+.assistant-avatar{background:var(--vt-paper)!important}
+.nexo-open-inline,.google-link{
+  border-color:var(--vt-gold)!important;
+  color:var(--vt-deep)!important;
+  background:var(--vt-gold)!important;
+}
+.contact-grid{gap:18px!important}
+.channel-icon{color:var(--vt-gold)!important;background:rgba(178,138,62,.1)!important}
+.tag{border-color:var(--vt-line)!important;background:var(--vt-paper)!important}
+
+/* Vértice Saúde */
+.vs-page{background:var(--vt-ivory)!important}
+.vs-header{border-bottom-color:rgba(178,138,62,.36)!important;background:var(--vt-paper)!important}
+.vs-hero{background:var(--vt-deep)!important}
+.vs-hero-copy h1{font-family:Georgia,"Times New Roman",serif!important;letter-spacing:-.04em!important}
+.vs-hero-copy h1,.vs-hero-copy p{color:#fff!important}
+.vs-trust,.vs-features,.vs-process,.vs-references{background:var(--vt-paper)!important}
+.vs-feature-rail,.vs-app-shell,.vs-shot,.vs-plan-grid article,.vs-steps article{
+  border-color:var(--vt-line)!important;
+  border-radius:var(--vt-radius)!important;
+  box-shadow:none!important;
+}
+.vs-feature-rail:hover,.vs-shot:hover,.vs-plan-grid article:hover{border-color:var(--vt-gold)!important;box-shadow:var(--vt-shadow)!important}
+.vs-download,.vs-responsibility{background:var(--vt-deep-soft)!important}
+
+/* Biblioteca normativa */
+.library-page{background:var(--vt-ivory)!important}
+.library-hero{background:var(--vt-deep)!important}
+.library-hero h1,.library-hero p{color:#fff!important}
+.library-hero-panel,.library-toolbar,.reference-card,.library-empty{
+  border-color:var(--vt-line)!important;
+  border-radius:var(--vt-radius)!important;
+  box-shadow:none!important;
+}
+.reference-card{background:var(--vt-paper)!important}
+.reference-card:hover{border-color:var(--vt-gold)!important;box-shadow:var(--vt-shadow)!important;transform:translateY(-3px)}
+.library-filters button.is-active,.library-filters button:hover{border-color:var(--vt-gold)!important;background:var(--vt-gold)!important;color:var(--vt-deep)!important}
+.library-legal{background:var(--vt-paper)!important}
+
+/* Ações */
+.btn{
+  min-height:54px;
+  border:1px solid var(--vt-gold)!important;
+  border-radius:2px!important;
+  color:var(--vt-white)!important;
+  background:var(--vt-gold)!important;
+  font-size:12px!important;
+  font-weight:800!important;
+  letter-spacing:.025em;
+  box-shadow:none!important;
+  transition:background .2s ease,color .2s ease,border-color .2s ease,transform .2s ease!important;
+}
+.btn:hover{border-color:var(--vt-deep)!important;color:var(--vt-white)!important;background:var(--vt-deep)!important;transform:translateY(-2px)}
+.cta{
+  padding:92px 0!important;
+  color:#fff!important;
+  background:var(--vt-blue)!important;
+  border-top:1px solid rgba(255,255,255,.18);
+}
+.cta .wrap,.cta-in{gap:48px}
+.cta h2{max-width:820px;color:#fff!important}
+.cta .btn{border-color:var(--vt-gold-light)!important;background:var(--vt-gold)!important}
+
+/* Rodapé */
+.footer,.contact{
+  color:#fff!important;
+  background:#171c20!important;
+}
+.footer{padding:86px 0 32px!important}
+.footer-grid,.contact-grid{gap:72px}
+.footer .brand-logo,.contact .brand-logo{width:190px}
+.footer h3,.contact h3{color:var(--vt-gold-light)!important;letter-spacing:.16em}
+.footer p,.footer-list,.contact p,.contact-list{color:rgba(255,255,255,.62)!important}
+.footer-list a:hover,.contact-list a:hover{color:var(--vt-gold-light)!important}
+.footline,.footer{border-color:rgba(255,255,255,.12)!important}
+.wa{box-shadow:0 16px 38px rgba(0,0,0,.26)!important}
+
+/* Vito: mantém a imagem e refina a moldura */
+.nexo-launcher,.nexo-panel,.nexo-widget{
+  border-color:rgba(178,138,62,.45)!important;
+  box-shadow:0 24px 60px rgba(10,20,28,.2)!important;
+}
+
+@media(max-width:1020px){
+  .wrap,.vs-wrap{width:min(100% - 44px,1240px)}
+  body:not(:has(#inicio))>.header{padding-inline:24px}
+  #inicio .hero-grid{grid-template-columns:1fr .82fr;gap:30px}
+  .split,.about-grid{gap:54px}
+}
+
+@media(max-width:760px){
+  .wrap,.vs-wrap{width:min(100% - 32px,1240px)}
+  .section{padding:76px 0}
+  body:not(:has(#inicio))>.header,body:has(#inicio)>.header{min-height:76px;height:76px;padding-inline:18px}
+  body:not(:has(#inicio))>.header .brand-logo,body:has(#inicio)>.header .brand-logo{width:168px}
+  body:not(:has(#inicio))>.header .menu nav{background:var(--vt-paper);border:1px solid var(--vt-line);box-shadow:var(--vt-shadow)}
+  body:not(:has(#inicio))>.header .menu summary i{background:var(--vt-deep)}
+  body:not(:has(#inicio))>.header .menu nav a{color:var(--vt-deep);border-bottom-color:var(--vt-line)}
+  body:not(:has(#inicio)) main>.hero{min-height:420px}
+  body:not(:has(#inicio)) main>.hero:before{inset:42px auto 42px 18px}
+  body:not(:has(#inicio)) main>.hero .wrap{padding:64px 0 64px 20px}
+  body:not(:has(#inicio)) main>.hero h1{font-size:clamp(42px,12vw,60px)}
+  body:not(:has(#inicio)) main>.hero p:not(.breadcrumb){font-size:15px}
+  #inicio .hero-grid{display:block;padding-top:132px;padding-bottom:66px}
+  #inicio .visual{transform:none}
+  .services-head{align-items:flex-start}
+  .card{padding:28px!important}
+  .split,.about-grid{gap:42px}
+  .contact-intro{overflow:hidden}
+  .footer{padding-top:68px!important}
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}
+}
